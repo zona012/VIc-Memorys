@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración general, estilos de la experiencia y módulos JavaScript. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#29251f">
+    <meta name="description" content="Un álbum hecho con cariño para Vic.">
+    <title>Para Vic · Un álbum de amistad</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="js/animations.js" defer></script>
+    <script src="js/scrapbook.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <!-- Textura ambiental compartida por la portada y las páginas. -->
+    <div class="ambient" aria-hidden="true"></div>
+    <main class="experience">
+        <!-- Invitación inicial: desaparece cuando se abre el álbum. -->
+        <section class="intro" id="intro" aria-labelledby="intro-title">
+            <span class="intro-label cinematic">UN ÁLBUM HECHO PARA VIC</span>
+            <h1 class="intro-title cinematic" id="intro-title">Lo que merece<br>quedarse.</h1>
+            <p class="intro-subtitle cinematic">Un pequeño lugar para todo lo que somos.</p>
+            <button class="start-button cinematic" id="start" type="button">
+                Abrir el álbum <span aria-hidden="true">→</span>
+            </button>
+            <span class="intro-footnote cinematic">Pasa las páginas sin prisa</span>
+        </section>
+
+        <!-- Libro interactivo: las nueve páginas se dibujan desde scrapbook.js. -->
+        <section class="scrapbook hidden" id="scrapbook" aria-label="Álbum de nueve páginas">
+            <div class="book-heading">
+                <span>RECUERDOS, RISAS Y OTRAS PRUEBAS</span>
+                <span class="book-ornament" aria-hidden="true">✳</span>
+            </div>
+            <!-- La hoja interior cambia de contenido al usar la navegación. -->
+            <div class="book">
+                <div class="paper" id="paper">
+                    <div class="paper-content" id="page-content" aria-live="polite"></div>
+                </div>
+            </div>
+            <!-- Controles accesibles; también se puede avanzar con las flechas. -->
+            <nav class="navigation" aria-label="Navegación del álbum">
+                <button class="nav-button" id="previous-page" type="button" aria-label="Regresar a la página anterior">
+                    <span aria-hidden="true">←</span> Anterior
+                </button>
+                <span class="page-counter" id="page-counter" aria-live="polite">Página 1 de 8</span>
+                <button class="nav-button" id="next-page" type="button">
+                    Siguiente <span aria-hidden="true">→</span>
+                </button>
+            </nav>
+            <p class="keyboard-hint">También puedes usar las flechas del teclado</p>
+        </section>
+    </main>
+
+    <!-- Ventana reutilizable para las notas escondidas de las páginas. -->
+    <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal" type="button" aria-label="Cerrar nota">×</button>
+            <span class="modal-kicker">UNA NOTA PARA VOS</span>
+            <h2 id="modal-title">Un recordatorio</h2>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+</body>
+</html>
