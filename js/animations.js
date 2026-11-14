@@ -8,12 +8,21 @@ const AnimationEngine = {
         });
     },
 
+    // Un solo temporizador activo evita crear una espera por cada elemento.
+    // Si la página se reemplaza durante la secuencia, el revelado se detiene.
     async revealSequence(container) {
         const elements = [...container.querySelectorAll('.reveal')];
 
-        await Promise.all(elements.map(async (element, index) => {
-            await this.sleep(Math.min(index * 90, 540));
+        if (this.reducedMotion) {
+            elements.forEach(element => element.classList.add('visible'));
+            return;
+        }
+
+        for (const [index, element] of elements.entries()) {
+            if (!container.isConnected || !element.isConnected) return;
+            if (index > 0) await this.sleep(90);
+            if (!container.isConnected || !element.isConnected) return;
             element.classList.add('visible');
-        }));
+        }
     }
 };
