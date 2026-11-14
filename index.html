@@ -50,6 +50,16 @@
                 <span>RECUERDOS, RISAS Y OTRAS PRUEBAS</span>
                 <button class="book-ornament" id="secret-ornament" type="button" aria-label="Adorno decorativo">✳</button>
             </div>
+            <form class="secret-entry" id="secret-form" autocomplete="off">
+                <label class="secret-entry-label" for="secret-word">¿Conoces una palabra secreta?</label>
+                <div class="secret-entry-controls">
+                    <input id="secret-word" name="secret-word" type="text" maxlength="20"
+                        placeholder="Escribe la clave" autocapitalize="none" spellcheck="false"
+                        enterkeyhint="go" aria-describedby="secret-feedback">
+                    <button type="submit">Descubrir</button>
+                </div>
+                <p class="secret-feedback" id="secret-feedback" role="status" aria-live="polite"></p>
+            </form>
             <!-- La hoja interior cambia de contenido al usar la navegación. -->
             <div class="book">
                 <div class="paper" id="paper">
