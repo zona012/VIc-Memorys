@@ -8,13 +8,12 @@
     let resetTimer;
 
     function showSecretNote() {
-        const modal = document.getElementById('modal');
-        if (!modal) return;
-        document.getElementById('modal-title').textContent = 'Un secreto de diciembre';
-        document.getElementById('modal-message').textContent =
-            'Encontraste el pequeño secreto navideño. Que nunca falten las sorpresas, las risas y los recuerdos que merecen quedarse.';
-        modal.classList.remove('hidden');
-        document.getElementById('close-modal')?.focus();
+        if (typeof Scrapbook !== 'undefined') {
+            Scrapbook.openModal(
+                'Un secreto de diciembre',
+                'Encontraste el pequeño secreto navideño. Que nunca falten las sorpresas, las risas y los recuerdos que merecen quedarse.'
+            );
+        }
     }
 
     function makeSnowfall() {
