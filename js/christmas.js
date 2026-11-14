@@ -67,6 +67,8 @@
 
     // Dos claves escritas en el teclado revelan secretos independientes.
     document.addEventListener('keydown', event => {
+        const album = document.getElementById('scrapbook');
+        if (!album || album.classList.contains('hidden')) return;
         if (!Scrapbook.modal.classList.contains('hidden')) return;
         if (event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
 
