@@ -9,6 +9,7 @@ const pageCounter = document.getElementById('page-counter');
 // Estado de navegación: índice cero y bandera que bloquea aperturas repetidas.
 let currentPage = 0;
 let started = false;
+let pageRenderId = 0;
 
 // Sincroniza los botones y el contador con la página activa.
 function updateNavigation() {
@@ -30,6 +31,7 @@ async function showPage(index) {
     if (index < 0 || index >= Scrapbook.pages.length) return;
 
     currentPage = index;
+    const renderId = ++pageRenderId;
     paper.innerHTML = Scrapbook.pages[index];
     updateNavigation();
 
@@ -37,6 +39,7 @@ async function showPage(index) {
     Scrapbook.preparePhotos(page);
     Scrapbook.renderGallery(page);
     await AnimationEngine.revealSequence(page);
+    if (renderId !== pageRenderId) return;
 }
 
 // Desvanece la invitación antes de mostrar la portada.

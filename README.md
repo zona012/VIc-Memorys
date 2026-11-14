@@ -9,3 +9,14 @@ La navegación funciona con los botones y las flechas izquierda/derecha. Las not
 Al entrar, una barra indica el progreso de carga de los recursos visuales iniciales. Las texturas y el adorno navideño usan versiones WebP optimizadas; las fotos de las páginas se cargan de forma diferida.
 
 Los comentarios en HTML, CSS y JavaScript separan los módulos y explican su función; las etiquetas numeradas de cada plantilla identifican las páginas del álbum.
+
+## Christmas Update (en desarrollo)
+
+Los cambios de esta actualización se trabajan en la rama `christmas-update`, sin modificar `main`.
+
+- El adorno ✳ del encabezado del libro es un easter egg: al pulsarlo cinco veces seguidas se revela una nota secreta y, si el dispositivo no solicita movimiento reducido, una nevada breve.
+- El efecto de nieve se crea únicamente al descubrir el secreto y utiliza 18 partículas CSS temporales; no añade animación continua durante la navegación normal.
+- Las secuencias de entrada ahora revelan los elementos en tandas limitadas y se detienen si se cambia de página, reduciendo temporizadores innecesarios.
+- Se corrigió el contador inicial para mostrar las nueve páginas reales.
+
+Las cartas y sus textos se mantienen sin cambios para que puedan actualizarse por separado.
