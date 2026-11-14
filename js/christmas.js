@@ -1,18 +1,26 @@
-// Easter eggs estacionales: nada se ejecuta hasta que alguien descubre el adorno.
+// Easter eggs estacionales: cada secreto se descubre con una interacción distinta.
 (() => {
     const ornament = document.getElementById('secret-ornament');
     if (!ornament) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const secretPhrases = {
+        comadres: {
+            title: 'Código de comadres',
+            message: 'Hay amistades que empiezan sin química y terminan convirtiéndose en una historia propia. Esta es una de esas.'
+        },
+        ranita: {
+            title: 'El archivo anfibio',
+            message: 'Una ranita, un recuerdo y un lugar asegurado en el museo de incidentes. Algunas leyendas nunca desaparecen.'
+        }
+    };
     let taps = 0;
     let resetTimer;
+    let typedKeys = '';
 
-    function showSecretNote() {
-        if (typeof Scrapbook !== 'undefined') {
-            Scrapbook.openModal(
-                'Un secreto de diciembre',
-                'Encontraste el pequeño secreto navideño. Que nunca falten las sorpresas, las risas y los recuerdos que merecen quedarse.'
-            );
+    function showSecretNote(title, message) {
+        if (typeof Scrapbook !== 'undefined' && Scrapbook.modal.classList.contains('hidden')) {
+            Scrapbook.openModal(title, message);
         }
     }
 
@@ -41,6 +49,7 @@
         window.setTimeout(() => layer.remove(), 9500);
     }
 
+    // Secreto navideño: cinco pulsaciones rápidas sobre el adorno.
     ornament.addEventListener('click', () => {
         taps += 1;
         ornament.classList.add('is-discovering');
@@ -50,6 +59,26 @@
         if (taps < 5) return;
         taps = 0;
         makeSnowfall();
-        showSecretNote();
+        showSecretNote(
+            'Un secreto de diciembre',
+            'Encontraste el pequeño secreto navideño. Que nunca falten las sorpresas, las risas y los recuerdos que merecen quedarse.'
+        );
+    });
+
+    // Dos claves escritas en el teclado revelan secretos independientes.
+    document.addEventListener('keydown', event => {
+        if (!Scrapbook.modal.classList.contains('hidden')) return;
+        if (event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
+
+        const target = event.target;
+        if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"]')) return;
+
+        typedKeys = (typedKeys + event.key.toLowerCase()).slice(-8);
+        const phrase = Object.keys(secretPhrases).find(key => typedKeys.endsWith(key));
+        if (!phrase) return;
+
+        typedKeys = '';
+        const secret = secretPhrases[phrase];
+        showSecretNote(secret.title, secret.message);
     });
 })();
