@@ -11,13 +11,27 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/animations.css">
     <script src="js/animations.js" defer></script>
+    <script src="js/loading.js" defer></script>
     <script src="js/scrapbook.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body>
+    <div class="page-loader" id="page-loader" role="status" aria-live="polite">
+        <div class="loader-content">
+            <span class="loader-kicker">UN DETALLE PARA VIC</span>
+            <p class="loader-message" id="loader-message">Preparando el álbum y sus texturas…</p>
+            <div class="loader-track" id="loader-progress" role="progressbar" aria-label="Carga del álbum" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span class="loader-bar" id="loader-bar"></span>
+            </div>
+            <span class="loader-percent" id="loader-percent">0%</span>
+        </div>
+    </div>
     <!-- Textura ambiental compartida por la portada y las páginas. -->
     <div class="ambient" aria-hidden="true"></div>
-    <main class="experience">
+    <div class="seasonal-decor" aria-hidden="true">
+        <img class="christmas-garland" src="assets/decorations/Christmas/christmas-garland.webp" alt="" fetchpriority="high">
+    </div>
+    <main class="experience" id="experience" inert>
         <!-- Invitación inicial: desaparece cuando se abre el álbum. -->
         <section class="intro" id="intro" aria-labelledby="intro-title">
             <span class="intro-label cinematic">UN ÁLBUM HECHO PARA VIC</span>

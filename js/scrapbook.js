@@ -16,7 +16,7 @@ const photoFrame = (caption, label, photoPath) => `
         data-note-title="${caption}"
         data-note-message="Esta imagen forma parte de tu álbum. También puedes abrirla y descargarla en la galería de la última página."
         aria-label="${label}">
-        <img class="photo-image" src="${photoPath}" alt="${caption}">
+        <img class="photo-image" src="${photoPath}" alt="${caption}" loading="lazy" decoding="async">
         <span class="photo-placeholder">Un espacio<br>para una fotografía</span>
         <span class="memory-caption">${caption}</span>
         <span class="photo-hint">PULSÁ PARA LEER LA NOTA</span>
@@ -49,8 +49,8 @@ const Scrapbook = {
     // Plantillas de las ocho páginas originales y la galería final.
     pages: [
         `<article class="page-layout cover-layout">
-            <img class="cover-branch reveal" src="assets/decorations/flowers/Rama-2.png" alt="">
-            <img class="cover-rose reveal" src="assets/decorations/flowers/Rosa.png" alt="">
+            <img class="cover-branch reveal" src="assets/decorations/flowers/Rama-2.webp" alt="">
+            <img class="cover-rose reveal" src="assets/decorations/flowers/Rosa.webp" alt="">
             <span class="page-label reveal">UN LIBRO PEQUEÑO, UN CARIÑO ENORME</span>
             <h2 class="page-title cover-title reveal">Para<br><em>Vic.</em></h2>
             <p class="page-copy cover-copy reveal">Hay historias que no necesitan hacer ruido<br>para convertirse en un hogar.</p>

@@ -48,15 +48,88 @@ button:focus-visible {
     display: none !important;
 }
 
+.page-loader {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--ink);
+    opacity: 1;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+
+.page-loader.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-content {
+    width: min(100%, 340px);
+    text-align: center;
+}
+
+.loader-kicker,
+.loader-percent {
+    color: #c4a98d;
+    font-size: 10px;
+    letter-spacing: .22em;
+}
+
+.loader-message {
+    margin: 20px 0;
+    color: var(--paper);
+    font-family: var(--serif);
+    font-size: 20px;
+}
+
+.loader-track {
+    height: 3px;
+    overflow: hidden;
+    background: #ffffff24;
+}
+
+.loader-bar {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: #c4a98d;
+    transition: width .2s ease;
+}
+
+.loader-percent {
+    display: block;
+    margin-top: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
 /* Textura ambiental detrás del álbum. */
 .ambient {
     position: fixed;
     z-index: 0;
     inset: 0;
     pointer-events: none;
-    opacity: .13;
-    background: url('../assets/decorations/textures/Grain-Color.jpg') repeat;
-    mix-blend-mode: screen;
+    opacity: .06;
+    background: url('../assets/decorations/textures/grain.webp') repeat;
+}
+
+.seasonal-decor {
+    position: fixed;
+    z-index: 0;
+    inset: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.christmas-garland {
+    display: block;
+    width: min(100%, 1400px);
+    height: auto;
+    object-fit: contain;
 }
 
 /* Centrado de la portada y del libro en pantallas pequeñas y grandes. */
@@ -170,7 +243,7 @@ button:focus-visible {
     color: var(--ink);
     background:
         linear-gradient(105deg, #f8f2e7d9, #f3ebddf2 54%, #eee3d1e8),
-        url('../assets/decorations/paper/Paper-old-1.jpg') center / cover;
+        url('../assets/decorations/paper/paper-old-1.webp') center / cover;
     box-shadow: inset 12px 0 22px -20px #211b15, inset -8px 0 18px -18px #211b15;
     transform-origin: left center;
 }
@@ -188,11 +261,10 @@ button:focus-visible {
     position: absolute;
     z-index: -1;
     inset: 0;
-    background: url('../assets/decorations/textures/Polvo.jpg') center / cover;
+    background: url('../assets/decorations/textures/dust.webp') center / cover;
     content: "";
-    opacity: .08;
+    opacity: .05;
     pointer-events: none;
-    mix-blend-mode: multiply;
 }
 
 .paper-content {
@@ -308,6 +380,10 @@ button:focus-visible {
 
 /* Ajustes compactos para teléfonos. */
 @media (max-width: 640px) {
+    .christmas-garland {
+        width: 100%;
+    }
+
     .experience {
         padding: 30px 12px 24px;
     }

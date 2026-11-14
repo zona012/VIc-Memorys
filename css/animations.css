@@ -50,14 +50,12 @@
 @keyframes pageContentsIn {
     from {
         opacity: .35;
-        transform: translateX(17px) rotateY(-2deg);
-        filter: blur(2px);
+        transform: translateX(12px);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0) rotateY(0);
-        filter: blur(0);
+        transform: translateX(0);
     }
 }
 
@@ -69,7 +67,6 @@
     to {
         opacity: 0;
         transform: translateY(-18px);
-        filter: blur(5px);
     }
 }
 
