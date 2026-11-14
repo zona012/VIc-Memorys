@@ -508,3 +508,95 @@ button:focus-visible {
         display: none;
     }
 }
+
+
+/* Campo de claves secretas: discreto en escritorio y cómodo al tacto en móvil. */
+.secret-entry {
+    width: min(100%, 390px);
+    margin: 0 auto 16px;
+    text-align: center;
+}
+
+.secret-entry-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b7a58f;
+    font-size: 10px;
+    letter-spacing: .08em;
+}
+
+.secret-entry-controls {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.secret-entry input {
+    width: min(100%, 245px);
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 13px;
+    border: 1px solid #a58b7077;
+    border-radius: 2px;
+    background: #211e19;
+    color: var(--paper);
+    font: inherit;
+    font-size: 14px;
+}
+
+.secret-entry input::placeholder {
+    color: #8e8272;
+}
+
+.secret-entry input:focus-visible,
+.secret-entry button:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 3px;
+}
+
+.secret-entry button {
+    min-height: 44px;
+    padding: 10px 15px;
+    border: 1px solid #a66b70;
+    border-radius: 2px;
+    background: var(--wine);
+    color: #fffaf0;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.secret-entry button:active {
+    background: #9a5059;
+}
+
+.secret-feedback {
+    min-height: 15px;
+    margin: 7px 0 0;
+    color: #c4a98d;
+    font-size: 10px;
+}
+
+@media (max-width: 640px) {
+    .secret-entry {
+        width: min(100%, 360px);
+        margin-bottom: 12px;
+        padding: 0 4px;
+    }
+
+    .secret-entry-controls {
+        gap: 7px;
+    }
+
+    .secret-entry input {
+        flex: 1;
+        width: auto;
+        min-height: 46px;
+        font-size: 16px;
+    }
+
+    .secret-entry button {
+        min-height: 46px;
+        padding: 10px 13px;
+        white-space: nowrap;
+    }
+}
