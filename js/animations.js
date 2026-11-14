@@ -8,8 +8,8 @@ const AnimationEngine = {
         });
     },
 
-    // Un solo temporizador activo evita crear una espera por cada elemento.
-    // Si la página se reemplaza durante la secuencia, el revelado se detiene.
+    // Agrupa elementos en siete tandas: como máximo seis esperas por página.
+    // Si la página se reemplaza, la secuencia anterior se detiene.
     async revealSequence(container) {
         const elements = [...container.querySelectorAll('.reveal')];
 
@@ -18,11 +18,12 @@ const AnimationEngine = {
             return;
         }
 
-        for (const [index, element] of elements.entries()) {
-            if (!container.isConnected || !element.isConnected) return;
-            if (index > 0) await this.sleep(90);
-            if (!container.isConnected || !element.isConnected) return;
-            element.classList.add('visible');
+        for (let batch = 0; batch <= 6; batch += 1) {
+            if (!container.isConnected) return;
+            elements.forEach((element, index) => {
+                if (Math.min(index, 6) === batch) element.classList.add('visible');
+            });
+            if (batch < 6 && elements.length > 0) await this.sleep(90);
         }
     }
 };
