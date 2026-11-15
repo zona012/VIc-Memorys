@@ -824,3 +824,305 @@ body {
         text-shadow: none;
     }
 }
+
+
+/* CHRISTMAS REDESIGN v3 — una edición navideña completa */
+:root {
+    --paper: #f7f0df;
+    --ink: #182820;
+    --wine: #9e3948;
+    --rose: #e7c8b7;
+    --brown: #d7b875;
+    --muted: #d2c7b5;
+    --forest: #18382c;
+    --forest-light: #315c45;
+    --cranberry: #a83f4c;
+    --gold-light: #f0d99e;
+}
+
+html, body {
+    background-color: #14251e;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 50% 5%, #42684d55, transparent 38%),
+        radial-gradient(ellipse at 8% 70%, #9e39481c, transparent 28%),
+        radial-gradient(ellipse at 92% 78%, #d7b87518, transparent 30%),
+        linear-gradient(145deg, #12251d 0%, #203c2d 48%, #14251e 100%);
+    color: #f8f0df;
+}
+
+body::before,
+body::after {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+body::before {
+    opacity: .38;
+    background-image:
+        radial-gradient(2px 2px at 12% 19%, #f6e7bd 45%, transparent 60%),
+        radial-gradient(1px 1px at 78% 13%, #fff 45%, transparent 60%),
+        radial-gradient(2px 2px at 88% 61%, #f6e7bd 45%, transparent 60%),
+        radial-gradient(1px 1px at 27% 82%, #fff 45%, transparent 60%),
+        radial-gradient(1px 1px at 64% 91%, #f6e7bd 45%, transparent 60%);
+    background-size: 290px 260px;
+}
+
+body::after {
+    inset: auto 0 0;
+    height: 18px;
+    background: repeating-linear-gradient(90deg, #a83f4c 0 22px, #d7b875 22px 44px, #315c45 44px 66px);
+    opacity: .8;
+    box-shadow: 0 -5px 24px #07150f88;
+}
+
+.ambient {
+    opacity: .11;
+    mix-blend-mode: soft-light;
+}
+
+.seasonal-decor {
+    z-index: 2;
+    height: clamp(58px, 9vw, 116px);
+    overflow: visible;
+    filter: drop-shadow(0 9px 12px #07150f99);
+}
+
+.christmas-garland {
+    width: min(100%, 1500px);
+    max-height: 150px;
+    object-fit: fill;
+}
+
+.experience {
+    z-index: 1;
+    min-height: 100svh;
+    padding: clamp(82px, 10vw, 132px) 22px 50px;
+}
+
+.intro {
+    width: min(100%, 790px);
+    padding: clamp(36px, 6vw, 70px) 28px;
+    border: 1px solid #d7b87588;
+    outline: 1px solid #d7b87530;
+    outline-offset: 9px;
+    background:
+        linear-gradient(145deg, #1a382bdf, #10251deF),
+        radial-gradient(circle at 50% 0%, #d7b87522, transparent 60%);
+    box-shadow: 0 28px 90px #06140e99, inset 0 0 55px #d7b8750c;
+    position: relative;
+}
+
+.intro::before,
+.intro::after {
+    position: absolute;
+    color: var(--gold-light);
+    font-size: clamp(28px, 5vw, 54px);
+    line-height: 1;
+    opacity: .9;
+    pointer-events: none;
+    text-shadow: 0 0 22px #f0d99e66;
+}
+.intro::before {
+    content: "✦  ❄";
+    top: 22px;
+    left: 24px;
+    transform: rotate(-12deg);
+}
+.intro::after {
+    content: "❄  ✦";
+    right: 24px;
+    bottom: 20px;
+    transform: rotate(12deg);
+}
+
+.intro-label {
+    color: var(--gold-light);
+    letter-spacing: .34em;
+}
+.intro-title {
+    margin: 30px 0 20px;
+    color: #fff7e7;
+    font-size: clamp(58px, 10vw, 104px);
+    text-shadow: 0 8px 34px #0008;
+}
+.intro-subtitle {
+    color: #e2d7c4;
+}
+.start-button {
+    margin-top: 38px;
+    padding: 17px 30px;
+    border: 1px solid #e5c987;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #b94c57, #7d2938);
+    box-shadow: 0 10px 30px #080f0c88, inset 0 1px #ffffff38;
+    color: #fff8e9;
+    font-weight: 600;
+    letter-spacing: .12em;
+}
+.start-button:hover {
+    background: linear-gradient(135deg, #ca5a62, #923344);
+    box-shadow: 0 14px 36px #080f0caa, 0 0 24px #c15a5a33;
+}
+.intro-footnote {
+    margin-top: 48px;
+    color: #d3bd8e;
+}
+
+.scrapbook {
+    width: min(100%, 1040px);
+    padding: 20px clamp(12px, 2vw, 24px) 24px;
+    border: 1px solid #d7b87588;
+    background: linear-gradient(135deg, #1a382cdd, #10231cdd);
+    box-shadow: 0 28px 90px #06140e99, inset 0 0 35px #d7b8750b;
+    backdrop-filter: blur(8px);
+}
+.book-heading {
+    margin-bottom: 15px;
+    color: var(--gold-light);
+    letter-spacing: .3em;
+}
+.book {
+    padding: 13px 15px 17px;
+    border: 2px solid #9c7746;
+    border-radius: 5px 12px 12px 5px;
+    background:
+        linear-gradient(90deg, #101c16 0%, #8a6a3e 1%, #254333 2.8%, #1c382b 5%, #1c382b 95%, #795d38 97%, #101c16 100%);
+    box-shadow: 0 28px 70px #020906aa, 0 0 0 5px #d7b87520, inset 0 0 0 1px #e8d39b55;
+}
+.book::before {
+    content: "";
+    position: absolute;
+}
+.paper {
+    min-height: 650px;
+    border: 1px solid #d2bd91;
+    background:
+        radial-gradient(ellipse at 50% 0%, #fffdf4 0%, transparent 60%),
+        linear-gradient(115deg, #fbf5e8, #f0e5d0 100%);
+    box-shadow: inset 0 0 45px #80623c18, inset 0 0 0 7px #d9c69d22;
+}
+.paper::before {
+    inset: 18px;
+    border: 1px solid #b99d6c77;
+    box-shadow: inset 0 0 0 5px #b99d6c12, 0 0 0 5px #fff8e655;
+}
+.paper::after {
+    opacity: .08;
+}
+.paper-content {
+    padding: 58px clamp(34px, 7vw, 82px) 48px;
+}
+.paper-content::before {
+    top: 26px;
+    left: 34px;
+    color: #315c45;
+    content: "✦";
+    font-size: 30px;
+    opacity: .62;
+}
+.paper-content::after {
+    right: 32px;
+    bottom: 25px;
+    color: #a83f4c;
+    content: "❄";
+    font-size: 26px;
+    opacity: .65;
+}
+.navigation {
+    padding-top: 22px;
+}
+.nav-button {
+    min-height: 44px;
+    border: 1px solid #d7b875aa;
+    background: #f4ead51a;
+    color: #fff5df;
+}
+.nav-button:hover:not(:disabled) {
+    border-color: #f0d99e;
+    background: #a83f4c;
+}
+.page-counter {
+    color: #f0d99e;
+}
+.keyboard-hint {
+    color: #d4c5a7;
+}
+.book-ornament {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #d7b87566;
+    background: #d7b87512;
+}
+.secret-entry {
+    width: min(100%, 440px);
+    margin-bottom: 18px;
+    padding: 10px 14px 0;
+}
+.secret-entry-label {
+    color: #f0d99e;
+    font-family: var(--serif);
+    font-size: 13px;
+}
+.secret-entry input {
+    border-color: #d7b87588;
+    background: #10251d;
+}
+.secret-entry button {
+    border-color: #e5c987;
+    background: linear-gradient(135deg, #b94c57, #7d2938);
+}
+.secret-feedback {
+    color: #f0d99e;
+}
+.modal {
+    background: #07150fe8;
+    backdrop-filter: blur(8px);
+}
+.modal-content {
+    border: 2px solid #c5a36b;
+    box-shadow: 0 30px 90px #000a, 0 0 0 7px #c5a36b20;
+}
+
+@media (max-width: 640px) {
+    body::after { height: 10px; }
+    .seasonal-decor {
+        height: 64px;
+    }
+    .christmas-garland {
+        width: 145%;
+        max-width: none;
+        transform: translateX(-15%);
+    }
+    .experience {
+        padding: 78px 10px 30px;
+    }
+    .intro {
+        padding: 48px 20px;
+        outline-offset: 5px;
+    }
+    .intro::before { top: 12px; left: 12px; font-size: 25px; }
+    .intro::after { right: 12px; bottom: 12px; font-size: 25px; }
+    .intro-title { font-size: clamp(55px, 15vw, 76px); }
+    .scrapbook {
+        padding: 14px 7px 18px;
+    }
+    .book {
+        padding: 8px 7px 10px;
+    }
+    .paper, .paper-content { min-height: 650px; }
+    .paper::before { inset: 10px; }
+    .paper-content { padding: 42px 26px 38px; }
+    .paper-content::before { top: 16px; left: 18px; font-size: 22px; }
+    .paper-content::after { right: 18px; bottom: 16px; font-size: 20px; }
+    .secret-entry { padding: 7px 4px 0; }
+    .navigation { padding-top: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .start-button, .nav-button, .book-ornament { transition: none; }
+}
