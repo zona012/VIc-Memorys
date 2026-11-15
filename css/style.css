@@ -3,12 +3,12 @@
 /* Paleta, tipografías y medidas base compartidas. */
 :root {
     color-scheme: dark;
-    --paper: #F3EBDD;
-    --ink: #29251F;
-    --wine: #873E46;
-    --rose: #D8B9B0;
-    --brown: #A58B70;
-    --muted: #c2b7a8;
+    --paper: #F5EEDC;
+    --ink: #1C2B25;
+    --wine: #963E49;
+    --rose: #E2C5B1;
+    --brown: #C5A36B;
+    --muted: #c8c2b6;
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', Arial, sans-serif;
 }
@@ -28,8 +28,9 @@ body {
     margin: 0;
     overflow-x: hidden;
     background:
-        radial-gradient(ellipse at 50% 43%, #873e4621, transparent 62%),
-        var(--ink);
+        radial-gradient(ellipse at 50% 43%, #963e4928, transparent 58%),
+        radial-gradient(ellipse at 12% 82%, #47745a22, transparent 38%),
+        #1c2b25;
     color: var(--paper);
     font-family: var(--sans);
 }
@@ -73,7 +74,7 @@ button:focus-visible {
 
 .loader-kicker,
 .loader-percent {
-    color: #c4a98d;
+    color: #d5bd8a;
     font-size: 10px;
     letter-spacing: .22em;
 }
@@ -95,7 +96,7 @@ button:focus-visible {
     display: block;
     width: 0;
     height: 100%;
-    background: #c4a98d;
+    background: #d5bd8a;
     transition: width .2s ease;
 }
 
@@ -598,5 +599,228 @@ button:focus-visible {
         min-height: 46px;
         padding: 10px 13px;
         white-space: nowrap;
+    }
+}
+
+
+/* Christmas visual refresh: bosque, cranberry y detalles de papel dorado. */
+:root {
+    --evergreen: #29483a;
+    --evergreen-deep: #1c2b25;
+    --cranberry: #963e49;
+    --holly: #47745a;
+    --gold: #d5bd8a;
+    --snow: #f8f4e9;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 50% 42%, #963e492b, transparent 58%),
+        radial-gradient(ellipse at 10% 78%, #47745a2b, transparent 36%),
+        radial-gradient(ellipse at 92% 18%, #d5bd8a12, transparent 30%),
+        var(--evergreen-deep);
+}
+
+.ambient {
+    opacity: .075;
+}
+
+.seasonal-decor {
+    filter: drop-shadow(0 7px 12px #0b171044);
+}
+
+.experience {
+    isolation: isolate;
+}
+
+.intro {
+    position: relative;
+}
+
+.intro::before,
+.intro::after {
+    position: absolute;
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: clamp(25px, 4vw, 42px);
+    line-height: 1;
+    opacity: .72;
+    pointer-events: none;
+    text-shadow: 0 4px 18px #d5bd8a30;
+}
+
+.intro::before {
+    top: 5%;
+    left: 7%;
+    content: "✧  ❄";
+    transform: rotate(-13deg);
+}
+
+.intro::after {
+    right: 6%;
+    bottom: 11%;
+    content: "❄  ✧";
+    transform: rotate(12deg);
+}
+
+.intro-label,
+.book-heading {
+    color: var(--gold);
+}
+
+.intro-title {
+    text-shadow: 0 10px 38px #0004;
+}
+
+.start-button {
+    border-color: #c69d71;
+    background: linear-gradient(135deg, #a64b53, #81343e);
+    box-shadow: 0 9px 28px #0004, inset 0 1px #ffffff24;
+}
+
+.start-button:hover {
+    background: linear-gradient(135deg, #b45860, #91414a);
+}
+
+.book {
+    border: 1px solid #b89a68a8;
+    background: linear-gradient(90deg, #17231d 0%, #66543b 1.2%, #3b3328 2.4%, #292c24 3%, #292c24 97%, #66543b 98.3%, #17231d 100%);
+    box-shadow: 0 30px 90px #0009, 0 5px 0 #111b16, 0 0 0 1px #d5bd8a20;
+}
+
+.paper {
+    background:
+        radial-gradient(ellipse at 7% 5%, #47745a12, transparent 32%),
+        radial-gradient(ellipse at 95% 95%, #963e4910, transparent 35%),
+        linear-gradient(105deg, #faf5e9ed, #f5eedcf5 54%, #f0e6d2ed),
+        url('../assets/decorations/paper/paper-old-1.webp') center / cover;
+}
+
+.paper::before {
+    border-color: #a58b7055;
+    box-shadow: inset 0 0 0 5px #d5bd8a0d;
+}
+
+.paper-content::before,
+.paper-content::after {
+    position: absolute;
+    z-index: 0;
+    color: #47745a;
+    font-family: var(--serif);
+    font-size: 25px;
+    line-height: 1;
+    opacity: .42;
+    pointer-events: none;
+}
+
+.paper-content::before {
+    top: 23px;
+    left: 28px;
+    content: "✧";
+    text-shadow: 10px 10px 0 #963e4933;
+}
+
+.paper-content::after {
+    right: 27px;
+    bottom: 22px;
+    content: "❄";
+    color: #963e49;
+    font-size: 21px;
+    transform: rotate(12deg);
+}
+
+.book-ornament {
+    color: var(--gold);
+}
+
+.book-ornament:hover,
+.book-ornament:focus-visible {
+    background: #d5bd8a1c;
+    color: #f4dfad;
+}
+
+.nav-button {
+    border-color: #d5bd8a80;
+}
+
+.nav-button:hover:not(:disabled) {
+    border-color: var(--cranberry);
+    background: var(--cranberry);
+}
+
+.page-counter {
+    color: #e1d3bd;
+}
+
+.secret-entry-label {
+    color: #d5bd8a;
+}
+
+.secret-entry input {
+    border-color: #d5bd8a77;
+    background: #17251f;
+}
+
+.secret-entry button {
+    border-color: #c69d71;
+    background: linear-gradient(135deg, #a64b53, #81343e);
+}
+
+.secret-feedback {
+    color: #e0c994;
+}
+
+.keyboard-hint {
+    color: #c4b69f;
+}
+
+.modal-content {
+    border-color: #c5a36b88;
+    background:
+        linear-gradient(#f5eedcf5, #f5eedcf5),
+        url('../assets/decorations/paper/Paper-2.jpg') center / cover;
+}
+
+.modal-kicker {
+    color: var(--cranberry);
+}
+
+.snowflake {
+    background: var(--snow);
+    box-shadow: 0 0 10px #fff8e988;
+}
+
+@media (max-width: 640px) {
+    .intro::before {
+        top: -12%;
+        left: 1%;
+        font-size: 25px;
+    }
+
+    .intro::after {
+        right: 1%;
+        bottom: -10%;
+        font-size: 25px;
+    }
+
+    .paper-content::before {
+        top: 15px;
+        left: 16px;
+        font-size: 20px;
+    }
+
+    .paper-content::after {
+        right: 15px;
+        bottom: 14px;
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .intro::before,
+    .intro::after,
+    .paper-content::before,
+    .paper-content::after {
+        text-shadow: none;
     }
 }
