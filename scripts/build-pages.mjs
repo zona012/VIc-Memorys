@@ -51,9 +51,10 @@ const sourceFiles = [
 ].filter(file => /\.(html|css|js)$/i.test(file));
 
 const assetReferences = new Set();
+const assetExtensions = String.raw\`(?:avif|webp|png|jpe?g|gif|svg|mp4|webm|mp3|ogg|woff2?)\`;
 const assetPatterns = [
-    /url\(\s*['"]?(?:\.\.\/)?(assets\/[^'")\s]+)['"]?\s*\)/g,
-    /['"`](assets\/[^'"`]+)['"`]/g
+    new RegExp(String.raw\`url\\(\\s*['"]?(?:\\.\\.\\/)?(assets\\/[^'")\\s]+\\. \${assetExtensions})['"]?\\s*\\)\`.replace("\\. ", "\\."), 'gi'),
+    new RegExp(String.raw\`['"\`](assets\\/[^'"\`\\r\\n]*?\\.\${assetExtensions})['"\`]\`, 'gi')
 ];
 
 for (const file of sourceFiles) {
