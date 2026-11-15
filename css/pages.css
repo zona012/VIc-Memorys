@@ -1196,3 +1196,38 @@
 @media (prefers-reduced-motion: reduce) {
     .cover-layout, .memory-frame, .gallery-card { animation: none; }
 }
+
+
+/* v3.1 — detalles limpios sin filtros costosos */
+.cover-layout {
+    border-width: 9px;
+    outline: 2px solid #d7b87588;
+    outline-offset: -19px;
+    box-shadow: inset 0 0 28px #07170f66, 0 8px 18px #32261618;
+}
+
+.cover-layout::before {
+    content: "";
+    border: 1px solid #d7b87588;
+    pointer-events: none;
+}
+
+.cover-layout .cover-branch,
+.cover-layout .cover-rose,
+.cover-layout .cover-seal,
+.page-flower,
+.support-mark {
+    filter: none;
+}
+
+.memory-frame,
+.gallery-card {
+    box-shadow: 0 6px 14px #33271918, inset 0 0 0 3px #fff9eb;
+}
+
+@media (max-width: 640px) {
+    .cover-layout {
+        border-width: 6px;
+        outline-offset: -14px;
+    }
+}
