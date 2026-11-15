@@ -862,3 +862,109 @@
         transition: none;
     }
 }
+
+
+/* Christmas visual refresh: adornos sutiles en las composiciones interiores. */
+.page-label {
+    color: #963e49;
+}
+
+.page-title em,
+.incident strong,
+.story-note strong,
+.letter-signature,
+.envelope-message,
+.gallery-download {
+    color: #963e49;
+}
+
+.page-footer,
+.page-number {
+    color: #8d7658;
+}
+
+.story-note {
+    border-left: 3px solid #963e49;
+    background:
+        linear-gradient(135deg, #e8d9c2e8, #f1e7d5e8);
+}
+
+.story-note::after {
+    position: absolute;
+    right: 15px;
+    bottom: 8px;
+    color: #47745a;
+    content: "✧";
+    font-size: 17px;
+    opacity: .65;
+}
+
+.memory-frame {
+    outline: 1px solid #c5a36b55;
+    outline-offset: -4px;
+}
+
+.memory-frame::before {
+    filter: saturate(.78);
+}
+
+.incident {
+    border-bottom-color: #47745a66;
+}
+
+.incident::before {
+    filter: sepia(.18) saturate(1.15);
+}
+
+.admiration-quote {
+    border-top-color: #c5a36b99;
+    border-bottom-color: #c5a36b99;
+    background: linear-gradient(90deg, transparent, #47745a0b, transparent);
+}
+
+.support-mark {
+    filter: drop-shadow(0 4px 5px #963e4920);
+}
+
+.letter-paper {
+    border-top: 2px solid #963e4966;
+    background:
+        linear-gradient(#f8f1e3e8, #f8f1e3e8),
+        url('../assets/decorations/paper/R-paper-1.png') center / cover;
+}
+
+.envelope {
+    background: #47745a;
+}
+
+.envelope::before {
+    background: linear-gradient(145deg, transparent 49.5%, #31533f 50%) left / 50% 100% no-repeat,
+        linear-gradient(215deg, transparent 49.5%, #3d664d 50%) right / 50% 100% no-repeat;
+}
+
+.envelope::after {
+    background: #6b8a6b;
+}
+
+.gallery-picker {
+    border-color: #963e4980;
+    background: #963e4910;
+    color: #963e49;
+}
+
+.gallery-picker:hover {
+    background: #963e49;
+}
+
+.gallery-card {
+    outline: 1px solid #c5a36b66;
+    outline-offset: -4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .memory-frame,
+    .page-sticker,
+    .envelope-button {
+        transform: none;
+    }
+}
