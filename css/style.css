@@ -1291,3 +1291,43 @@ body::after {
         scroll-behavior: auto;
     }
 }
+
+
+/* v3.1 — la guirnalda forma parte del fondo, nunca tapa el contenido */
+.seasonal-decor {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(76px, 10vw, 116px);
+    overflow: hidden;
+    filter: none;
+    pointer-events: none;
+}
+
+.christmas-garland {
+    width: min(100%, 1280px);
+    height: 100%;
+    max-height: 116px;
+    margin-inline: auto;
+    object-fit: contain;
+    object-position: center top;
+    transform: none;
+}
+
+@media (max-width: 640px) {
+    .seasonal-decor {
+        height: 64px;
+    }
+
+    .christmas-garland {
+        width: 100%;
+        height: 64px;
+        max-height: 64px;
+        object-fit: contain;
+        object-position: center top;
+        transform: none;
+    }
+}
