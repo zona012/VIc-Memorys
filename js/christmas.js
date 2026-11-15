@@ -1,7 +1,10 @@
 // Easter eggs estacionales: cada secreto se descubre con una interacción distinta.
 (() => {
     const ornament = document.getElementById('secret-ornament');
-    if (!ornament) return;
+    const form = document.getElementById('secret-form');
+    const input = document.getElementById('secret-word');
+    const feedback = document.getElementById('secret-feedback');
+    if (!ornament || !form || !input || !feedback) return;
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const secretPhrases = {
@@ -16,7 +19,6 @@
     };
     let taps = 0;
     let resetTimer;
-    let typedKeys = '';
 
     function showSecretNote(title, message) {
         if (typeof Scrapbook !== 'undefined' && Scrapbook.modal.classList.contains('hidden')) {
@@ -49,6 +51,29 @@
         window.setTimeout(() => layer.remove(), 9500);
     }
 
+    // El formulario funciona tanto con el botón como con Enter en el teclado móvil.
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        const phrase = input.value.trim().toLocaleLowerCase('es');
+
+        if (!phrase) {
+            feedback.textContent = 'Escribe una palabra para probar.';
+            input.focus();
+            return;
+        }
+
+        const secret = secretPhrases[phrase];
+        if (!secret) {
+            feedback.textContent = 'Esa palabra no abrió ningún secreto. Prueba otra.';
+            input.select();
+            return;
+        }
+
+        feedback.textContent = 'Encontraste algo escondido.';
+        input.value = '';
+        showSecretNote(secret.title, secret.message);
+    });
+
     // Secreto navideño: cinco pulsaciones rápidas sobre el adorno.
     ornament.addEventListener('click', () => {
         taps += 1;
@@ -63,24 +88,5 @@
             'Un secreto de diciembre',
             'Encontraste el pequeño secreto navideño. Que nunca falten las sorpresas, las risas y los recuerdos que merecen quedarse.'
         );
-    });
-
-    // Dos claves escritas en el teclado revelan secretos independientes.
-    document.addEventListener('keydown', event => {
-        const album = document.getElementById('scrapbook');
-        if (!album || album.classList.contains('hidden')) return;
-        if (!Scrapbook.modal.classList.contains('hidden')) return;
-        if (event.ctrlKey || event.altKey || event.metaKey || event.key.length !== 1) return;
-
-        const target = event.target;
-        if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable="true"]')) return;
-
-        typedKeys = (typedKeys + event.key.toLowerCase()).slice(-8);
-        const phrase = Object.keys(secretPhrases).find(key => typedKeys.endsWith(key));
-        if (!phrase) return;
-
-        typedKeys = '';
-        const secret = secretPhrases[phrase];
-        showSecretNote(secret.title, secret.message);
     });
 })();

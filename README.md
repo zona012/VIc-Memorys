@@ -15,7 +15,7 @@ Los comentarios en HTML, CSS y JavaScript separan los módulos y explican su fun
 Los cambios de esta actualización se trabajan en la rama `christmas-update`, sin modificar `main`.
 
 - El adorno ✳ del encabezado del libro es un easter egg: al pulsarlo cinco veces seguidas se revela una nota secreta y, si el dispositivo no solicita movimiento reducido, una nevada breve.
-- Se añadieron dos easter eggs independientes que se descubren escribiendo `comadres` y `ranita` mientras el álbum está abierto. Cada clave revela una nota distinta; no reemplazan las notas interactivas originales.
+- Se añadieron dos easter eggs independientes: escribe `comadres` o `ranita` en el campo «¿Conoces una palabra secreta?» situado bajo el encabezado del libro y pulsa «Descubrir». El formulario también funciona con Enter y el teclado virtual del móvil.
 - El efecto de nieve es la recompensa visual del secreto del adorno, no un easter egg adicional: utiliza 18 partículas CSS temporales y no añade animación continua durante la navegación normal.
 - Las secuencias de entrada ahora revelan los elementos en tandas limitadas y se detienen si se cambia de página, reduciendo temporizadores innecesarios.
 - Se corrigió el contador inicial para mostrar las nueve páginas reales.
