@@ -257,7 +257,7 @@
     padding: 15px;
     background:
         linear-gradient(135deg, #ddceba9c, #ebe1d1b3),
-        url('../assets/decorations/paper/Paper-3.jpg') center / cover;
+        url('../assets/decorations/paper/paper-old-1.webp') center / cover;
     color: #796c5d;
     font-family: var(--serif);
     font-size: 13px;
@@ -686,7 +686,7 @@
     overflow: hidden;
     background:
         linear-gradient(135deg, #ddceba9c, #ebe1d1b3),
-        url('../assets/decorations/paper/Paper-3.jpg') center / cover;
+        url('../assets/decorations/paper/paper-old-1.webp') center / cover;
 }
 
 .gallery-image {
@@ -700,7 +700,7 @@
     height: 104px;
     background:
         linear-gradient(135deg, #ddceba9c, #ebe1d1b3),
-        url('../assets/decorations/paper/Paper-3.jpg') center / cover;
+        url('../assets/decorations/paper/paper-old-1.webp') center / cover;
 }
 
 .gallery-caption {
@@ -1099,7 +1099,7 @@
 .photo-placeholder {
     background:
         linear-gradient(135deg, #e8dcc8, #d8c6a8),
-        url('../assets/decorations/paper/Paper-3.jpg') center / cover;
+        url('../assets/decorations/paper/paper-old-1.webp') center / cover;
     color: #6f604b;
 }
 .memory-caption {

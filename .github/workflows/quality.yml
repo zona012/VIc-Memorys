@@ -1,0 +1,32 @@
+name: Verificar proyecto
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - christmas-update
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Comprobar sintaxis JavaScript
+        run: |
+          for file in js/*.js scripts/*.mjs; do
+            node --check "$file"
+          done
+
+      - name: Construir el sitio y validar recursos
+        run: node scripts/build-pages.mjs

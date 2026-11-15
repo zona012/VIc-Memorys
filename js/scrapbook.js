@@ -43,6 +43,7 @@ const pageEnd = number => `
 const Scrapbook = {
     modal: document.getElementById('modal'),
     previousFocus: null,
+    previousExperienceInert: false,
     selectedGalleryFiles: [],
     galleryObjectUrls: new Map(),
 
@@ -311,6 +312,31 @@ const Scrapbook = {
             if (event.target === this.modal) this.closeModal();
         });
 
+        // Mantiene el foco dentro del diálogo mientras la nota está abierta.
+        this.modal.addEventListener('keydown', event => {
+            if (event.key !== 'Tab') return;
+
+            const focusable = [...this.modal.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )].filter(element => !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+
+            if (focusable.length === 0) {
+                event.preventDefault();
+                return;
+            }
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        });
+
         document.addEventListener('click', event => {
             if (!(event.target instanceof Element)) return;
             const noteTrigger = event.target.closest('[data-note-title]');
@@ -349,7 +375,13 @@ const Scrapbook = {
     },
 
     openModal(title, message) {
-        this.previousFocus = document.activeElement;
+        if (this.modal.classList.contains('hidden')) {
+            this.previousFocus = document.activeElement;
+            const experience = document.getElementById('experience');
+            this.previousExperienceInert = experience ? experience.inert : false;
+            if (experience) experience.inert = true;
+        }
+
         document.getElementById('modal-title').textContent = title;
         document.getElementById('modal-message').textContent = message;
         this.modal.classList.remove('hidden');
@@ -359,7 +391,15 @@ const Scrapbook = {
     closeModal() {
         if (this.modal.classList.contains('hidden')) return;
         this.modal.classList.add('hidden');
-        if (this.previousFocus instanceof HTMLElement) this.previousFocus.focus();
+
+        const experience = document.getElementById('experience');
+        if (experience) experience.inert = this.previousExperienceInert;
+
+        const previousFocus = this.previousFocus;
+        this.previousFocus = null;
+        if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+            previousFocus.focus();
+        }
     }
 };
 
