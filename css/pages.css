@@ -968,3 +968,231 @@
         transform: none;
     }
 }
+
+
+/* CHRISTMAS REDESIGN v3 — dirección de arte para las nueve páginas */
+.page-layout {
+    position: relative;
+    isolation: isolate;
+}
+.page-layout:not(.cover-layout)::before {
+    position: absolute;
+    z-index: -1;
+    inset: -18px -22px;
+    border: 1px solid #b99d6c2b;
+    content: "";
+    pointer-events: none;
+}
+.page-layout:not(.cover-layout)::after {
+    position: absolute;
+    z-index: -1;
+    top: -11px;
+    right: -8px;
+    width: 76px;
+    height: 76px;
+    border-top: 2px solid #315c4544;
+    border-right: 2px solid #315c4544;
+    content: "";
+    pointer-events: none;
+}
+.page-label {
+    color: #9e3948;
+    font-weight: 700;
+    letter-spacing: .3em;
+}
+.page-title {
+    color: #24372b;
+    text-shadow: 0 2px 0 #fff9e9;
+}
+.page-title em,
+.page-copy strong,
+.incident strong,
+.story-note strong,
+.letter-signature,
+.envelope-message,
+.gallery-download {
+    color: #963846;
+}
+.page-copy {
+    color: #5c5549;
+}
+.page-footer, .page-number {
+    color: #987b50;
+}
+
+/* Portada interior: se convierte en una tapa verde con marco y sello. */
+.cover-layout {
+    position: relative;
+    overflow: hidden;
+    min-height: 556px;
+    padding: 40px 24px;
+    border: 8px double #c6a66a;
+    outline: 1px solid #315c45;
+    outline-offset: -17px;
+    background:
+        radial-gradient(ellipse at 50% 42%, #3d684b 0%, transparent 55%),
+        radial-gradient(circle at 10% 10%, #d6b87525 0 2px, transparent 3px),
+        radial-gradient(circle at 90% 88%, #d6b87525 0 2px, transparent 3px),
+        linear-gradient(145deg, #183c2c, #10271e 75%);
+    box-shadow: inset 0 0 60px #07170f99, 0 12px 28px #32261620;
+    color: #fff4dc;
+}
+.cover-layout::before,
+.cover-layout::after {
+    position: absolute;
+    color: #e6ca8b;
+    pointer-events: none;
+}
+.cover-layout::before {
+    inset: 15px;
+    border: 1px solid #d7b87566;
+    content: "✦                                              ✦";
+    padding: 10px;
+    font-size: 20px;
+    text-align: justify;
+}
+.cover-layout::after {
+    right: 50%;
+    bottom: 25px;
+    content: "❄  ✦  ❄";
+    transform: translateX(50%);
+    font-size: 22px;
+    letter-spacing: .7em;
+    opacity: .75;
+}
+.cover-layout .page-label {
+    color: #e6ca8b;
+}
+.cover-layout .page-title,
+.cover-layout .page-title em {
+    color: #fff5df;
+    text-shadow: 0 5px 18px #07170f88;
+}
+.cover-layout .page-copy {
+    color: #e7ddc8;
+}
+.cover-layout .cover-branch {
+    filter: sepia(.3) saturate(.8) brightness(1.1);
+}
+.cover-layout .cover-rose {
+    filter: drop-shadow(0 6px 10px #0007);
+}
+.cover-layout .page-footer,
+.cover-layout .page-number {
+    color: #d9c28f;
+}
+.cover-layout .cover-seal {
+    width: 58px;
+    filter: drop-shadow(0 5px 7px #0008);
+}
+
+/* Recuerdos y fotografías: marcos de álbum físico. */
+.memory-frame {
+    border: 1px solid #d0b77e;
+    background: linear-gradient(145deg, #fffdf5, #eee3d0);
+    box-shadow: 0 12px 25px #33271925, inset 0 0 0 4px #fff9eb;
+}
+.memory-frame::before {
+    background-color: #e8d4ad;
+    filter: sepia(.15);
+}
+.photo-placeholder {
+    background:
+        linear-gradient(135deg, #e8dcc8, #d8c6a8),
+        url('../assets/decorations/paper/Paper-3.jpg') center / cover;
+    color: #6f604b;
+}
+.memory-caption {
+    color: #4d4438;
+}
+.photo-hint {
+    color: #9b7951;
+}
+.story-note {
+    border: 1px solid #d1b77e;
+    border-left: 4px solid #963846;
+    background: linear-gradient(135deg, #f2e6d1, #e7d6bd);
+    box-shadow: 0 12px 26px #4a39251c;
+}
+.story-note::after {
+    content: "❄";
+    color: #315c45;
+}
+.incident {
+    border-bottom: 1px dashed #a58b706b;
+    background: linear-gradient(90deg, #315c450d, transparent);
+}
+.incident::before {
+    filter: sepia(.3) saturate(1.3);
+}
+.admiration-quote {
+    border-top: 2px solid #c5a36b99;
+    border-bottom: 2px solid #c5a36b99;
+    background: linear-gradient(90deg, transparent, #d9c69d55, transparent);
+}
+.support-mark {
+    filter: drop-shadow(0 5px 8px #963e4930);
+}
+.letter-paper {
+    border: 1px solid #d2bd91;
+    border-top: 4px solid #963846;
+    background:
+        radial-gradient(circle at 12px 12px, #b99d6c24 1px, transparent 1.5px) 0 0 / 18px 18px,
+        linear-gradient(145deg, #fffaf0, #eee2ce);
+    box-shadow: 0 14px 30px #32271925, inset 0 0 0 5px #d8c59d22;
+}
+.envelope {
+    border: 1px solid #a98a58;
+    background: #315c45;
+    box-shadow: 0 10px 24px #33271935, inset 0 0 0 4px #ffffff18;
+}
+.envelope::before {
+    background: linear-gradient(145deg, transparent 49.5%, #234735 50%) left / 50% 100% no-repeat,
+        linear-gradient(215deg, transparent 49.5%, #294f3b 50%) right / 50% 100% no-repeat;
+}
+.envelope::after {
+    background: #477454;
+}
+.envelope-label {
+    color: #7c6040;
+}
+.gallery-card {
+    border: 1px solid #d0b77e;
+    background: linear-gradient(145deg, #fffdf5, #eee3d0);
+    box-shadow: 0 10px 22px #33271925, inset 0 0 0 4px #fff9eb;
+}
+.gallery-picker {
+    border: 1px solid #963846;
+    background: #963846;
+    color: #fff8e9;
+}
+.gallery-picker:hover {
+    background: #315c45;
+    border-color: #315c45;
+}
+.gallery-count, .gallery-status {
+    color: #6c604f;
+}
+
+@media (max-width: 640px) {
+    .cover-layout {
+        min-height: 566px;
+        padding: 32px 15px;
+        border-width: 6px;
+    }
+    .cover-layout::before { inset: 12px; }
+    .cover-layout::after { bottom: 18px; font-size: 17px; }
+    .page-layout:not(.cover-layout)::before { inset: -8px -10px; }
+    .page-layout:not(.cover-layout)::after {
+        top: -5px;
+        right: -4px;
+        width: 42px;
+        height: 42px;
+    }
+    .memory-frame {
+        padding: 8px 8px 10px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cover-layout, .memory-frame, .gallery-card { animation: none; }
+}
