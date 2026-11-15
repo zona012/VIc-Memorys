@@ -51,13 +51,18 @@ const sourceFiles = [
 ].filter(file => /\.(html|css|js)$/i.test(file));
 
 const assetReferences = new Set();
-const assetPattern = /assets\/[^'")`\r\n]+/g;
+const assetPatterns = [
+    /url\(\s*['"]?(?:\.\.\/)?(assets\/[^'")\s]+)['"]?\s*\)/g,
+    /['"`](assets\/[^'"`]+)['"`]/g
+];
 
 for (const file of sourceFiles) {
     const source = await readFile(file, 'utf8');
-    for (const match of source.matchAll(assetPattern)) {
-        const reference = match[0].trim();
-        if (!reference.endsWith('/')) assetReferences.add(reference);
+    for (const pattern of assetPatterns) {
+        for (const match of source.matchAll(pattern)) {
+            const reference = match[1].trim();
+            if (!reference.endsWith('/')) assetReferences.add(reference);
+        }
     }
 }
 
