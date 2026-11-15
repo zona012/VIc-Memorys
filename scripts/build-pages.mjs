@@ -52,8 +52,8 @@ const sourceFiles = [
 
 const assetReferences = new Set();
 const assetPatterns = [
-    /url\\(\\s*['\"]?(?:\\.\\.\\/)?(assets\\/[^'\")\\s]+\\.(?:avif|webp|png|jpe?g|gif|svg|mp4|webm|mp3|ogg|woff2?))['\"]?\\s*\\)/gi,
-    /['\"`](assets\\/[^'\"`\\r\\n]*?\\.(?:avif|webp|png|jpe?g|gif|svg|mp4|webm|mp3|ogg|woff2?))['\"`]/gi
+    /url\(\s*['"]?(?:\.\.\/)?(assets\/[^'")\s]+\.(?:avif|webp|png|jpe?g|gif|svg|mp4|webm|mp3|ogg|woff2?))['"]?\s*\)/gi,
+    /['"`](assets\/[^'"`\r\n]*?\.(?:avif|webp|png|jpe?g|gif|svg|mp4|webm|mp3|ogg|woff2?))['"`]/gi
 ];
 
 for (const file of sourceFiles) {
