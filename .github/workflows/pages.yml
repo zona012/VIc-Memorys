@@ -25,13 +25,21 @@ jobs:
       - name: Descargar proyecto
         uses: actions/checkout@v4
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Preparar sitio y recursos necesarios
+        run: node scripts/build-pages.mjs
+
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Preparar archivos
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
 
       - name: Publicar sitio
         id: deployment
